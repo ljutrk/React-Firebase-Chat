@@ -6,10 +6,10 @@ class ChatRoom extends Component {
         this.state = {
             message: "",
             messages: [
-                { id: 0, message: "message 1"},
-                { id: 1, message: "message 2"},
-                { id: 2, message: "message 3"},
-                { id: 3, message: "message 4"}
+                { id: 0, message: "message 1" },
+                { id: 1, message: "message 2" },
+                { id: 2, message: "message 3" },
+                { id: 3, message: "message 4" }
             ]
         }
     }
@@ -25,6 +25,16 @@ class ChatRoom extends Component {
         })
     }
 
+    addNewMessage = () => {
+        const newMessage = {
+            id: this.state.messages.length,
+            message: this.state.message
+        }
+        const messages = [...this.state.messages, newMessage]
+        this.setState({ messages, message: "" })
+
+    }
+
     render() {
 
         return (
@@ -35,6 +45,7 @@ class ChatRoom extends Component {
                     </ul>
                 </div>
                 <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
+                <button onClick={this.addNewMessage}>add message</button>
             </div>
         );
     }
