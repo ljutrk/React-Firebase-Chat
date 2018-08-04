@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+import Header from './partials/Header';
 
 class ChatRoom extends Component {
     constructor(props) {
@@ -40,15 +41,11 @@ class ChatRoom extends Component {
         this.setState({ message: "" });
     }
 
-    logout = () => {
-        firebase.auth.signOut();
-    }
 
     render() {
-
         return (
             <div className="ChatRoom">
-            <h1>Welcome {this.props.user.email}</h1>
+                <Header user={this.props.user.email} />
                 <div className="chat-window">
                     <ul>
                         {this.showMessages()}
@@ -56,7 +53,6 @@ class ChatRoom extends Component {
                 </div>
                 <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
                 <button onClick={this.addNewMessage}>add message</button>
-                <button onClick={this.logout}>log out</button>
             </div>
         );
     }

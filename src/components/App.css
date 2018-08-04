@@ -1,3 +1,23 @@
+::-webkit-input-placeholder {
+    font-style: italic;
+    color: rgba(46, 92, 113, 0.5);
+}
+
+::-moz-placeholder {
+    font-style: italic;
+    color: rgba(46, 92, 113, 0.5);
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+    color: rgba(46, 92, 113, 0.5);
+}
+
+:-moz-placeholder {
+    font-style: italic;
+    color: rgba(46, 92, 113, 0.5);
+}
+
 .loginDiv {
     display: flex;
     height: 100%;
@@ -35,4 +55,26 @@
     font-size: 18px;
     background: #2e5c71;
     cursor: pointer;
+}
+
+.headerDiv {
+    background-color: #2e5c71;
+    padding: 5px;
+}
+
+.headerUL {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.headerUL li {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.logoutLI:hover {
+    cursor: pointer;
+    color: #b09a68;
 }
