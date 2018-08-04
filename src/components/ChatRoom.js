@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
+import { firebase } from '../firebase/index';
 
 class ChatRoom extends Component {
     constructor(props) {
         super(props);
         this.state = {
             message: "",
-            messages: [
-                { id: 0, message: "message 1" },
-                { id: 1, message: "message 2" },
-                { id: 2, message: "message 3" },
-                { id: 3, message: "message 4" }
-            ]
+            messages: [],
         }
+    }
+
+    componentDidMount() {
+        firebase.db.ref('messages/').on('value', snapshot => {
+            const messages = snapshot.val();
+            if (messages != null) {
+                this.setState({ messages })
+            }
+        });
     }
 
     inputChangeHandler = (event) => {
@@ -30,9 +35,9 @@ class ChatRoom extends Component {
             id: this.state.messages.length,
             message: this.state.message
         }
-        const messages = [...this.state.messages, newMessage]
-        this.setState({ messages, message: "" })
 
+        firebase.db.ref('messages/' + newMessage.id).set(newMessage);
+        this.setState({ message: "" });
     }
 
     render() {
