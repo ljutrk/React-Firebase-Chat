@@ -27,14 +27,15 @@ class ChatRoom extends Component {
 
     showMessages = () => {
         return this.state.messages.map(message => {
-            return <li key={message.id}> {message.message} </li>
+            return <li className={message.userEmail === this.props.user.email ? "blue" : ""} key={message.id}> <span className="chatNameSpan">{message.userEmail}</span> {`: ${message.message}`} </li>
         })
     }
 
     addNewMessage = () => {
         const newMessage = {
             id: this.state.messages.length,
-            message: this.state.message
+            message: this.state.message,
+            userEmail: this.props.user.email
         }
 
         firebase.db.ref('messages/' + newMessage.id).set(newMessage);
@@ -43,16 +44,22 @@ class ChatRoom extends Component {
 
 
     render() {
+        console.log(this.props.user);
+        
         return (
-            <div className="ChatRoom">
+            <div className="chatRoomDiv">
                 <Header user={this.props.user.email} />
-                <div className="chat-window">
-                    <ul>
-                        {this.showMessages()}
-                    </ul>
+                <div className="chat">
+                    <div className="chat-window">
+                        <ul>
+                            {this.showMessages()}
+                        </ul>
+                    </div>
+                    <div className="chat-window-footer">
+                        <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
+                        <button onClick={this.addNewMessage}>add message</button>
+                    </div>
                 </div>
-                <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
-                <button onClick={this.addNewMessage}>add message</button>
             </div>
         );
     }
