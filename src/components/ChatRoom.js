@@ -14,7 +14,7 @@ class ChatRoom extends Component {
         firebase.db.ref('messages/').on('value', snapshot => {
             const messages = snapshot.val();
             if (messages != null) {
-                this.setState({ messages })
+                this.setState({ messages });
             }
         });
     }
@@ -40,10 +40,15 @@ class ChatRoom extends Component {
         this.setState({ message: "" });
     }
 
+    logout = () => {
+        firebase.auth.signOut();
+    }
+
     render() {
 
         return (
             <div className="ChatRoom">
+            <h1>Welcome {this.props.user.email}</h1>
                 <div className="chat-window">
                     <ul>
                         {this.showMessages()}
@@ -51,6 +56,10 @@ class ChatRoom extends Component {
                 </div>
                 <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
                 <button onClick={this.addNewMessage}>add message</button>
+                <br />
+                <br />
+                <br />
+                <button onClick={this.logout}>log out</button>
             </div>
         );
     }
