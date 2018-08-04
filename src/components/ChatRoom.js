@@ -56,9 +56,6 @@ class ChatRoom extends Component {
                 </div>
                 <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
                 <button onClick={this.addNewMessage}>add message</button>
-                <br />
-                <br />
-                <br />
                 <button onClick={this.logout}>log out</button>
             </div>
         );
