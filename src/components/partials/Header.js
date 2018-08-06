@@ -9,10 +9,12 @@ const Header = (props) => {
 
     return (
         <div className="headerDiv">
-            <ul className="headerUL">
-                <li>{props.user}</li>
-                <li className="logoutLI" onClick={logout}>logout</li>
-            </ul>
+            <div className="container">
+                <ul className="headerUL">
+                    <li>{props.user}</li>
+                    <li className="logoutLI" onClick={logout}>logout</li>
+                </ul>
+            </div>
         </div>
     );
 }

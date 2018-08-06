@@ -31,7 +31,8 @@ class ChatRoom extends Component {
         })
     }
 
-    addNewMessage = () => {
+    addNewMessage = (event) => {
+        event.preventDefault();
         const newMessage = {
             id: this.state.messages.length,
             message: this.state.message,
@@ -45,7 +46,7 @@ class ChatRoom extends Component {
 
     render() {
         console.log(this.props.user);
-        
+
         return (
             <div className="chatRoomDiv">
                 <Header user={this.props.user.email} />
@@ -55,10 +56,10 @@ class ChatRoom extends Component {
                             {this.showMessages()}
                         </ul>
                     </div>
-                    <div className="chat-window-footer">
+                    <form className="chat-window-footer" onSubmit={this.addNewMessage}>
                         <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
-                        <button onClick={this.addNewMessage}>add message</button>
-                    </div>
+                        <button type="submit">+</button>
+                    </form>
                 </div>
             </div>
         );
