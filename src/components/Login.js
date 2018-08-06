@@ -15,7 +15,8 @@ class Login extends Component {
         this.setState({ [e.target.id]: e.target.value });
     }
 
-    login = () => {
+    login = (event) => {
+        event.preventDefault();
         firebase.auth.signInWithEmailAndPassword(this.state.email, this.state.pass)
         // .then(user => {
         //     console.log(user);
@@ -29,13 +30,13 @@ class Login extends Component {
 
         return (
             <div className="loginDiv">
-                <div className="loginForm">
+                <form className="loginForm" onSubmit={this.login}>
                     <h1>WELCOME!</h1>
                     <input id="email" onChange={this.inputChange} value={this.state.email} type="text" placeholder="Email" />
                     <input id="pass" onChange={this.inputChange} value={this.state.pass} type="password" placeholder="Password" />
-                    <button onClick={this.login}>log in</button>
+                    <button type="submit">log in</button>
                     <p>Don't have an account? <Link to="/register"><span className="signupSpan">Sign up!</span></Link></p>
-                </div>
+                </form>
             </div>
         );
     }

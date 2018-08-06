@@ -45,21 +45,22 @@ class ChatRoom extends Component {
 
 
     render() {
-        console.log(this.props.user);
 
         return (
             <div className="chatRoomDiv">
                 <Header user={this.props.user.email} />
-                <div className="chat">
-                    <div className="chat-window">
-                        <ul>
-                            {this.showMessages()}
-                        </ul>
+                <div className="container">
+                    <div className="chat">
+                        <div className="chat-window">
+                            <ul>
+                                {this.showMessages()}
+                            </ul>
+                        </div>
+                        <form className="chat-window-footer" onSubmit={this.addNewMessage}>
+                            <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
+                            <button type="submit">+</button>
+                        </form>
                     </div>
-                    <form className="chat-window-footer" onSubmit={this.addNewMessage}>
-                        <input onChange={this.inputChangeHandler} value={this.state.message} type="text" placeholder="Your Message" />
-                        <button type="submit">+</button>
-                    </form>
                 </div>
             </div>
         );

@@ -15,7 +15,8 @@ class Register extends Component {
         this.setState({ [e.target.id]: e.target.value });
     }
 
-    signup = () => {
+    signup = (event) => {
+        event.preventDefault();
         firebase.auth.createUserWithEmailAndPassword(this.state.email, this.state.pass)
         // .then(user => {
         //     console.log(user);
@@ -23,22 +24,18 @@ class Register extends Component {
         // .catch(error => {
         //     console.log(error);
         // })
-        this.setState({
-            email: "",
-            pass: ""
-        })
     }
 
     render() {
         return (
             <div className="registerDiv">
-                <div className="registerForm">
+                <form className="registerForm" onSubmit={this.signup}>
                     <h1>REGISTRATION</h1>
                     <input id="email" onChange={this.inputChange} value={this.state.email} type="text" placeholder="Email" />
                     <input id="pass" onChange={this.inputChange} value={this.state.pass} type="password" placeholder="Password" />
-                    <button onClick={this.signup}>register</button>
+                    <button type="submit">register</button>
                     <p>Back to <Link to="/"><span className="loginSpan">login!</span></Link></p>
-                </div>
+                </form>
             </div>
         );
     }
