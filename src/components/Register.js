@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
-import { Link } from 'react-router-dom';
 
-class Login extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,30 +14,32 @@ class Login extends Component {
         this.setState({ [e.target.id]: e.target.value });
     }
 
-    login = () => {
-        firebase.auth.signInWithEmailAndPassword(this.state.email, this.state.pass)
+    signup = () => {
+        firebase.auth.createUserWithEmailAndPassword(this.state.email, this.state.pass)
         // .then(user => {
         //     console.log(user);
         // })
         // .catch(error => {
         //     console.log(error);
         // })
+        this.setState({
+            email: "",
+            pass: ""
+        })
     }
 
     render() {
-
         return (
-            <div className="loginDiv">
-                <div className="loginForm">
-                    <h1>WELCOME!</h1>
+            <div className="registerDiv">
+                <div className="registerForm">
+                    <h1>REGISTRATION</h1>
                     <input id="email" onChange={this.inputChange} value={this.state.email} type="text" placeholder="Email" />
                     <input id="pass" onChange={this.inputChange} value={this.state.pass} type="password" placeholder="Password" />
-                    <button onClick={this.login}>log in</button>
-                    <p>Don't have an account? <Link to="/signup"><span className="signupSpan" onClick={this.signup}>Sign up!</span></Link></p>
+                    <button onClick={this.signup}>register</button>
                 </div>
             </div>
         );
     }
 }
 
-export default Login;
+export default Register;

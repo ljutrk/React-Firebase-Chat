@@ -3,6 +3,7 @@ import ChatRoom from './ChatRoom';
 import { firebase } from '../firebase/index';
 import './App.css';
 import Login from './Login';
+import Register from './Register';
 
 class App extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.user ? <ChatRoom user={this.state.user} /> : <Login />}
+        {this.state.user ? <ChatRoom user={this.state.user} /> : <Register />}
       </div>
     );
   }
