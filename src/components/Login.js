@@ -34,7 +34,7 @@ class Login extends Component {
                     <input id="email" onChange={this.inputChange} value={this.state.email} type="text" placeholder="Email" />
                     <input id="pass" onChange={this.inputChange} value={this.state.pass} type="password" placeholder="Password" />
                     <button onClick={this.login}>log in</button>
-                    <p>Don't have an account? <Link to="/signup"><span className="signupSpan" onClick={this.signup}>Sign up!</span></Link></p>
+                    <p>Don't have an account? <Link to="/register"><span className="signupSpan">Sign up!</span></Link></p>
                 </div>
             </div>
         );

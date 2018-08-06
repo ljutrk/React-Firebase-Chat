@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase/index';
+import { Link } from 'react-router-dom';
 
 class Register extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ class Register extends Component {
                     <input id="email" onChange={this.inputChange} value={this.state.email} type="text" placeholder="Email" />
                     <input id="pass" onChange={this.inputChange} value={this.state.pass} type="password" placeholder="Password" />
                     <button onClick={this.signup}>register</button>
+                    <p>Back to <Link to="/"><span className="loginSpan">login!</span></Link></p>
                 </div>
             </div>
         );

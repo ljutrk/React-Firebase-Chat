@@ -31,7 +31,7 @@
     color: #2e5c71;
 }
 
-.signupSpan {
+.signupSpan, .loginSpan {
     color: red;
 }
 
@@ -39,7 +39,7 @@ a {
     text-decoration: none;
 }
 
-.signupSpan:hover {
+.signupSpan:hover, .loginSpan:hover {
     color: #2e5c71;
     cursor: pointer;
 }
